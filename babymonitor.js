@@ -36,8 +36,8 @@ client.on('message', message => {
     client.commands.get('co').execute(message, process.env.CHANNEL);
   } else if (command === 'bmonitor') {
     client.commands.get('bmonitor').execute(message);
-  } else if (command === 'bstop') {
-    client.commands.get('bstop').execute(message);
+  } else if (command === 'disco') {
+    client.commands.get('disco').execute(message);
   }
 });
 

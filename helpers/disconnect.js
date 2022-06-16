@@ -11,6 +11,8 @@ const disconnectFromCurrentVoiceChannel = (message) => {
 
     console.log(`leaving voice channel ${voiceChannel.name} in guild ${guild.name}`);
     currentVoiceSessionInGuild.disconnect();
+
+    message.reply(`Leaving ${voiceChannel.name} in guild ${guild.name}`);
   }
 };
 

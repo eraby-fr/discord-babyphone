@@ -17,34 +17,35 @@ module.exports = {
     }
 
     if (message.guild.channels) {
-      // `connection` should be an instance of VoiceConnection
-      let connection;
+
+      let voiceChan;
+      let connection; // `connection` should be an instance of VoiceConnection
 
       message.guild.channels.forEach((value, key) => {
         if(value.name === channel) {
-          try {
-            connection = value.join();
-          } catch (err) {
-            console.error(err);
-            return;
-          }
-
-          console.log('grabbing microphone stream');
-          const micStream = getDefaultMicrophoneStream();
-
-          console.log('playing microphone stream through bot')
-
-          console.log(connection)
-
-          const dispatch = connection.play(micStream, { type: 'converted' });
-
-          // Destroy the stream when the bot leaves the channel
-          dispatch.on('end', () => {
-            console.log('stream ended. destroying microphone stream');
-            micStream.destroy();
-          });
+          voiceChan = value;
         }
      });
+
+     try {
+        connection = await voiceChan.join();
+      } catch (err) {
+        console.error(err);
+        return;
+      }
+
+      console.log('grabbing microphone stream');
+      const micStream = getDefaultMicrophoneStream();
+
+      console.log('playing microphone stream through bot')
+      const dispatch = connection.playConvertedStream(micStream);
+      message.reply(`Playing microphone stream through bot in ${channel}`);
+
+      // Destroy the stream when the bot leaves the channel
+      dispatch.on('end', () => {
+        console.log('stream ended. destroying microphone stream');
+        micStream.destroy();
+      });
     }
   }
 }
