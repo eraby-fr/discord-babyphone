@@ -1,8 +1,8 @@
-# Discord Baby Monitor 👾🤖🎤👶
+# Discord Baby Phone
 
-A weekend project to test the feasibility of running a **Discord bot** on a **Raspberry Pi** that pipes microphone audio into a voice channel.
+Based on MasterKale work, this is a small tool to easily monitor my baby when I am outside.
 
-Conclusion: it works!
+I wanted to do that without any wireless mic near the baby and to be able to listen from my phone or computer.
 
 ![RPi 2 Model B and Snowball Mic](./setup.jpg)
 <br>
