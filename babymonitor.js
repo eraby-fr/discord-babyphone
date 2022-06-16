@@ -32,7 +32,9 @@ client.on('message', message => {
   const args = message.content.slice(prefix.length).split(/ +/);
   const command = args.shift().toLowerCase();
 
-  if (command === 'bmonitor') {
+  if (command === 'co') {
+    client.commands.get('co').execute(message, process.env.CHANNEL);
+  } else if (command === 'bmonitor') {
     client.commands.get('bmonitor').execute(message);
   } else if (command === 'bstop') {
     client.commands.get('bstop').execute(message);
